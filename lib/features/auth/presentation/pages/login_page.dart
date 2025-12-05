@@ -43,6 +43,11 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
+          if (state.status == AuthStatus.authenticated) {
+            Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil('/dashboard', (route) => false);
+          }
           if (state.status == AuthStatus.failure && state.message != null) {
             ScaffoldMessenger.of(
               context,
@@ -65,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const Text(
-                          'Welcome back 👋',
+                          'Welcome back',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,

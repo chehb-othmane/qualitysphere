@@ -68,7 +68,7 @@ class _SignupPageState extends State<SignupPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const Text(
-                          'Create account ✨',
+                          'Create account',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,

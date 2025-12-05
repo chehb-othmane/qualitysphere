@@ -12,6 +12,7 @@ import 'features/profile/presentation/pages/profile_page.dart';
 import 'features/tickets/presentation/bloc/tickets_bloc.dart';
 import 'features/tickets/presentation/bloc/tickets_event.dart';
 import 'injection_container.dart';
+import 'features/profile/presentation/pages/users_page.dart';
 
 class QualitySphereApp extends StatelessWidget {
   const QualitySphereApp({super.key});
@@ -37,6 +38,7 @@ class QualitySphereApp extends StatelessWidget {
           '/dashboard': (_) => const DashboardPage(),
           '/tickets': (_) => const TicketsPage(showAppBar: true),
           '/profile': (_) => const ProfilePage(),
+          '/users': (_) => const UsersPage(), //
         },
       ),
     );
