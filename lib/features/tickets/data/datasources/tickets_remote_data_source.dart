@@ -1,6 +1,5 @@
-import 'package:dio/dio.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../../core/network/dio_client.dart';
 import '../models/ticket_model.dart';
 import '../../domain/entities/ticket.dart';
 
@@ -9,31 +8,56 @@ abstract class TicketsRemoteDataSource {
 }
 
 class TicketsRemoteDataSourceImpl implements TicketsRemoteDataSource {
-  final DioClient dioClient;
+  final FirebaseFirestore firestore;
 
-  TicketsRemoteDataSourceImpl({required this.dioClient});
+  TicketsRemoteDataSourceImpl({required this.firestore});
 
   @override
   Future<List<TicketModel>> fetchTicketsFromApi() async {
     try {
-      final Response response = await dioClient.dio.get('/posts');
-      final List data = response.data as List;
+      // Collection "tickets" f Firestore
+      final querySnapshot = await firestore.collection('tickets').get();
 
-      // Just first 10 posts par exemple
-      final subset = data.take(10).toList();
+      final docs = querySnapshot.docs;
 
-      return subset.map((item) {
-        final map = item as Map<String, dynamic>;
+      return docs.map((doc) {
+        final data = doc.data();
+
+        // status string -> enum
+        final String statusString = (data['status'] as String?) ?? 'open';
+
+        TicketStatus status;
+        switch (statusString) {
+          case 'inProgress':
+            status = TicketStatus.inProgress;
+            break;
+          case 'resolved':
+            status = TicketStatus.resolved;
+            break;
+          case 'open':
+          default:
+            status = TicketStatus.open;
+        }
+
+        // createdAt: Timestamp -> DateTime
+        DateTime createdAt;
+        final createdAtField = data['createdAt'];
+        if (createdAtField is Timestamp) {
+          createdAt = createdAtField.toDate();
+        } else {
+          createdAt = DateTime.now();
+        }
+
         return TicketModel(
-          id: map['id'].toString(),
-          title: map['title'] as String,
-          description: (map['body'] as String?) ?? '',
-          status: TicketStatus.open,
-          createdAt: DateTime.now(),
+          id: doc.id, // id dyal Firestore
+          title: (data['title'] as String?) ?? 'Untitled ticket',
+          description: (data['description'] as String?) ?? 'No description',
+          status: status,
+          createdAt: createdAt,
         );
       }).toList();
     } catch (e) {
-      throw Exception('Network error while fetching tickets');
+      throw Exception('Firestore error while fetching tickets: $e');
     }
   }
 }

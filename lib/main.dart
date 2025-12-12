@@ -7,11 +7,12 @@ import 'features/auth/data/datasources/auth_local_data_source.dart';
 
 import 'features/tickets/data/datasources/tickets_local_data_source.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 Future<void> _seedAdminUser() async {
   final box = Hive.box(AuthLocalDataSourceImpl.usersBoxName);
-
   const adminEmail = 'admin@qualitysphere.com';
-
   if (!box.containsKey(adminEmail)) {
     await box.put(adminEmail, {
       'id': 'admin',
@@ -25,15 +26,13 @@ Future<void> _seedAdminUser() async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Hive.initFlutter();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+  await Hive.initFlutter();
   // Open users box
   await Hive.openBox(AuthLocalDataSourceImpl.usersBoxName);
   await Hive.openBox(TicketsLocalDataSourceImpl.ticketsBoxName);
-
   await _seedAdminUser();
-
   await di.init();
-
   runApp(const QualitySphereApp());
 }

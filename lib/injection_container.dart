@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'features/auth/data/datasources/auth_local_data_source.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
@@ -27,6 +28,19 @@ Future<void> init() async {
   // SharedPreferences
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+
+  // Firebase Firestore instance
+  sl.registerLazySingleton<FirebaseFirestore>(() => FirebaseFirestore.instance);
+
+  // Tickets local data source
+  sl.registerLazySingleton<TicketsLocalDataSource>(
+    () => TicketsLocalDataSourceImpl(),
+  );
+
+  // Tickets remote data source (Firestore)
+  sl.registerLazySingleton<TicketsRemoteDataSource>(
+    () => TicketsRemoteDataSourceImpl(firestore: sl<FirebaseFirestore>()),
+  );
 
   // Data sources
   sl.registerLazySingleton<AuthLocalDataSource>(
@@ -62,7 +76,7 @@ Future<void> init() async {
 
   // Tickets remote data source
   sl.registerLazySingleton<TicketsRemoteDataSource>(
-    () => TicketsRemoteDataSourceImpl(dioClient: sl()),
+    () => TicketsRemoteDataSourceImpl(firestore: sl()),
   );
 
   // Tickets repository

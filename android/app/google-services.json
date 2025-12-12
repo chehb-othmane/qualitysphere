@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "877675965690",
+    "project_id": "qualitysphere-simple",
+    "storage_bucket": "qualitysphere-simple.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877675965690:android:bdeedf4e96bbbf254ded43",
+        "android_client_info": {
+          "package_name": "com.example.qualityaphere_simple"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjVHQ0pFm-BixWzxJxRh6YajG-CuJv9gQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
