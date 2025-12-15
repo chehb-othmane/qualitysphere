@@ -91,19 +91,6 @@ class _SignupPageState extends State<SignupPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       // Logo and Header
-                      Container(
-                        height: 80,
-                        width: 80,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.asset(
-                            'assets/icons/icon.png',
-                            width: 80,
-                            height: 80,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
                       const SizedBox(height: 8),
                       Text(
                         'Create your account',
@@ -122,7 +109,7 @@ class _SignupPageState extends State<SignupPage> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: textColor.withOpacity(0.6),
+                            color: textColor.withValues(alpha: 0.6),
                           ),
                           children: [
                             const TextSpan(text: 'Get started with '),
@@ -151,7 +138,7 @@ class _SignupPageState extends State<SignupPage> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: textColor.withOpacity(0.8),
+                                color: textColor.withValues(alpha: 0.8),
                               ),
                             ),
                           ),
@@ -165,7 +152,7 @@ class _SignupPageState extends State<SignupPage> {
                             decoration: InputDecoration(
                               hintText: 'Enter your full name',
                               hintStyle: TextStyle(
-                                color: textColor.withOpacity(0.4),
+                                color: textColor.withValues(alpha: 0.4),
                               ),
                               filled: true,
                               fillColor: inputColor,
@@ -204,7 +191,7 @@ class _SignupPageState extends State<SignupPage> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: textColor.withOpacity(0.8),
+                                color: textColor.withValues(alpha: 0.8),
                               ),
                             ),
                           ),
@@ -219,7 +206,7 @@ class _SignupPageState extends State<SignupPage> {
                             decoration: InputDecoration(
                               hintText: 'Enter your email address',
                               hintStyle: TextStyle(
-                                color: textColor.withOpacity(0.4),
+                                color: textColor.withValues(alpha: 0.4),
                               ),
                               filled: true,
                               fillColor: inputColor,
@@ -261,7 +248,7 @@ class _SignupPageState extends State<SignupPage> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: textColor.withOpacity(0.8),
+                                color: textColor.withValues(alpha: 0.8),
                               ),
                             ),
                           ),
@@ -276,7 +263,7 @@ class _SignupPageState extends State<SignupPage> {
                             decoration: InputDecoration(
                               hintText: 'Enter your password',
                               hintStyle: TextStyle(
-                                color: textColor.withOpacity(0.4),
+                                color: textColor.withValues(alpha: 0.4),
                               ),
                               filled: true,
                               fillColor: inputColor,
@@ -297,7 +284,7 @@ class _SignupPageState extends State<SignupPage> {
                                   _obscurePassword
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: textColor.withOpacity(0.4),
+                                  color: textColor.withValues(alpha: 0.4),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -331,7 +318,7 @@ class _SignupPageState extends State<SignupPage> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: textColor.withOpacity(0.8),
+                                color: textColor.withValues(alpha: 0.8),
                               ),
                             ),
                           ),
@@ -346,7 +333,7 @@ class _SignupPageState extends State<SignupPage> {
                             decoration: InputDecoration(
                               hintText: 'Confirm your password',
                               hintStyle: TextStyle(
-                                color: textColor.withOpacity(0.4),
+                                color: textColor.withValues(alpha: 0.4),
                               ),
                               filled: true,
                               fillColor: inputColor,
@@ -367,7 +354,7 @@ class _SignupPageState extends State<SignupPage> {
                                   _obscureConfirmPassword
                                       ? Icons.visibility_off
                                       : Icons.visibility,
-                                  color: textColor.withOpacity(0.4),
+                                  color: textColor.withValues(alpha: 0.4),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -400,7 +387,7 @@ class _SignupPageState extends State<SignupPage> {
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.zero,
                             elevation: 8,
-                            shadowColor: primaryColor.withOpacity(0.25),
+                            shadowColor: primaryColor.withValues(alpha: 0.25),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
@@ -450,7 +437,7 @@ class _SignupPageState extends State<SignupPage> {
                             'Already have an account? ',
                             style: TextStyle(
                               fontSize: 14,
-                              color: textColor.withOpacity(0.6),
+                              color: textColor.withValues(alpha: 0.6),
                             ),
                           ),
                           GestureDetector(

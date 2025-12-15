@@ -31,6 +31,7 @@ class QualitySphereApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF135BEC)),
+          fontFamily: 'Manrope',
         ),
         debugShowCheckedModeBanner: false,
         home: const _RootPage(),

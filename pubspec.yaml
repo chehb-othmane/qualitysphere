@@ -80,7 +80,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/icons/icon.png
+    - assets/icons/logo.png
   fonts:
     - family: Manrope
       fonts:
