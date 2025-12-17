@@ -167,7 +167,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: textColor.withOpacity(0.6),
+                                  color: textColor.withValues(alpha: 0.6),
                                 ),
                                 children: [
                                   const TextSpan(text: 'Log in to '),
@@ -288,7 +288,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               "Don't have an account? ",
                               style: TextStyle(
                                 fontSize: 14,
-                                color: textColor.withOpacity(0.6),
+                                color: textColor.withValues(alpha: 0.6),
                               ),
                             ),
                             _AnimatedTextLink(
@@ -354,7 +354,7 @@ class _AnimatedTextFieldState extends State<_AnimatedTextField> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: widget.textColor.withOpacity(0.8),
+              color: widget.textColor.withValues(alpha: 0.8),
             ),
           ),
         ),

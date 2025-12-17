@@ -43,6 +43,8 @@ dependencies:
   firebase_core: ^3.15.2
   cloud_firestore: ^5.0.0
 
+  flutter_layout_grid: ^2.0.5
+  intl: ^0.18.0
 
 
   # Network
